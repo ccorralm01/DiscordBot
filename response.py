@@ -26,12 +26,7 @@ async def get_response(message):
         
         action = await song(message, command, msg_content)
         res = action
-    
-    # si comienza por time
-    if command == f"{PREFIX}time":
-        print("Accediendo a sección time")
-        res = "ok"
-    
+            
     # si comienza por help
     if command == f"{PREFIX}help":
         print("Accediendo a sección help")
