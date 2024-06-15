@@ -23,17 +23,13 @@ async def send_message(message, user_message):
         print("no msg")
         return
     
-    # Si mensaje empieza !
     if user_message[0] == PREFIX:
-        
-        # Acciones bot
         try:
-            response = get_response(user_message)
+            response = await get_response(message)
             await message.channel.send(response)
         except Exception as e:
             print(e)
-    else:
-        return
+        
         
 # Inicializado 
 @client.event
@@ -50,7 +46,6 @@ async def on_message(message):
     user_message = str(message.content)
     channel = str(message.channel)
     
-    print(f'{channel}, {username}: {user_message}, {message}')
     await send_message(message, user_message)
 
 def main():
