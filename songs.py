@@ -36,6 +36,10 @@ async def song(message, command, url):
                 song_url = data['url']
                 await message.delete()
                 
+                # Obtener la URL de la miniatura del video
+                thumbnails = data.get('thumbnails')
+                thumbnail_url = thumbnails[-1]['url'] if thumbnails else None  # Tomar la última miniatura
+
                 # Crear un objeto de audio para reproducir en Discord
                 player = discord.FFmpegOpusAudio(song_url, **ffmpeg_options)
 
