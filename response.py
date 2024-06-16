@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 from songs import song
 
+load_dotenv()
 PREFIX = os.getenv("PREFIX")
 
 song_actions = [f'play','pause','resume','stop', 'loop', 'skip']
@@ -24,7 +25,7 @@ async def get_response(message):
     # si comienza por song_actions
     if command in song_actions:
         
-        action = await song(message, command, msg_content)
+        action = await song(message, command)
         res = action
             
     # si comienza por help
